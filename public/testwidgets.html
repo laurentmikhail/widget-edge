@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <title>Universal Widget Test Page</title>
@@ -12,26 +13,31 @@
       background-color: #f8f9fa;
       color: #212529;
     }
+
     .container {
       max-width: 90%;
       margin: 0 auto;
       padding: 20px;
     }
+
     header {
       background-color: #fff;
       border-bottom: 1px solid #dee2e6;
       padding: 10px 20px;
       margin-bottom: 2rem;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     }
+
     .controls {
       display: flex;
       align-items: center;
       gap: 10px;
     }
+
     .controls label {
       font-weight: bold;
     }
+
     .controls button {
       padding: 8px 16px;
       font-size: 14px;
@@ -42,14 +48,17 @@
       cursor: pointer;
       transition: background-color 0.2s, border-color 0.2s;
     }
+
     .controls button:hover {
       background-color: #e9ecef;
     }
+
     .controls button.active {
       background-color: #0d6efd;
       color: #fff;
       border-color: #0d6efd;
     }
+
     .widget-area {
       padding: 2rem;
       background-color: #fff;
@@ -57,12 +66,15 @@
       border: 1px solid #dee2e6;
       min-height: 200px;
     }
-    h1, h2 {
+
+    h1,
+    h2 {
       border-bottom: 1px solid #dee2e6;
       padding-bottom: 8px;
     }
   </style>
 </head>
+
 <body>
 
   <header>
@@ -133,13 +145,13 @@
      * @param {string} activeId The ID of the currently active widget.
      */
     function updateActiveButton(activeId) {
-        buttonsContainer.querySelectorAll('button').forEach(btn => {
-            if (btn.dataset.widgetId === activeId) {
-                btn.classList.add('active');
-            } else {
-                btn.classList.remove('active');
-            }
-        });
+      buttonsContainer.querySelectorAll('button').forEach(btn => {
+        if (btn.dataset.widgetId === activeId) {
+          btn.classList.add('active');
+        } else {
+          btn.classList.remove('active');
+        }
+      });
     }
 
     // --- INITIALIZATION ---
@@ -160,4 +172,5 @@
   </script>
 
 </body>
+
 </html>
