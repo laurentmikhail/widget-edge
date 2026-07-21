@@ -1,4 +1,4 @@
-import { el, toUnit } from './utils.js';
+import { appendText, applyBorder, el, makeIcon, setText, toUnit } from './utils.js';
 import { getIconSvgByName } from './icons.js';
 
 /* =========================================================
@@ -21,7 +21,7 @@ function _buildDetailedContent(panel, banner, isMobile) {
 
     if (banner.presentedBy) {
         const presentedBar = el('div', { display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px', padding: '8px', fontSize: '12px', color: banner.presentedBy.textColor || '#666', background: banner.presentedBy.bgColor || '#f0f0f0' });
-        const pText = el('span'); pText.textContent = banner.presentedBy.text || 'Presented by';
+        const pText = el('span'); setText(pText, banner.presentedBy.text || 'Presented by');
         const pLogo = el('img', { height: '18px' });
         pLogo.src = banner.presentedBy.logoUrl;
         presentedBar.appendChild(pText); presentedBar.appendChild(pLogo);
@@ -34,11 +34,27 @@ function _buildDetailedContent(panel, banner, isMobile) {
     const eventLogoEl = banner.eventLogoUrl ? el('img', { height: '40px', marginBottom: '16px', alignSelf: 'flex-start' }) : null;
     if (eventLogoEl) eventLogoEl.src = banner.eventLogoUrl;
 
-    const titleEl = content.title ? el('h2', { fontSize: '28px', fontWeight: '800', margin: '0 0 12px', lineHeight: '1.2' }) : null;
-    if (titleEl) titleEl.textContent = content.title;
+    const contentIconEl = makeIcon({
+        iconUrl: content.iconUrl,
+        iconSvg: content.iconSvg,
+        iconName: content.iconName,
+        icon: content.icon,
+        iconColor: content.iconColor,
+        size: content.iconSize ?? 28,
+        getNamedIcon: getIconSvgByName
+    });
+
+    const titleEl = content.title ? el('h2', { fontSize: '28px', fontWeight: '800', margin: contentIconEl ? '0' : '0 0 12px', lineHeight: '1.2' }) : null;
+    if (titleEl) setText(titleEl, content.title);
+
+    const titleGroup = contentIconEl || titleEl ? el('div', { display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '12px' }) : null;
+    if (titleGroup) {
+        if (contentIconEl) titleGroup.appendChild(contentIconEl);
+        if (titleEl) titleGroup.appendChild(titleEl);
+    }
 
     const descriptionEl = content.description ? el('p', { fontSize: '16px', margin: '0 0 24px', opacity: '0.8' }) : null;
-    if (descriptionEl) descriptionEl.textContent = content.description;
+    if (descriptionEl) setText(descriptionEl, content.description);
 
     // --- CTA Button ---
     let ctaBtn = null;
@@ -47,20 +63,22 @@ function _buildDetailedContent(panel, banner, isMobile) {
         ctaBtn.href = ctaCfg.url;
         ctaBtn.target = '_blank';
         ctaBtn.rel = 'noopener';
+        applyBorder(ctaBtn, ctaCfg.border);
 
-        if (ctaCfg.iconUrl) {
-            const img = el('img', { width: '20px', height: '20px', objectFit: 'contain', display: 'block' });
-            img.src = ctaCfg.iconUrl;
-            ctaBtn.appendChild(img);
-        } else {
-            const pinIconSvg = getIconSvgByName('pin');
-            if (pinIconSvg) {
-                const iconSpan = el('span', { display: 'flex', alignItems: 'center' });
-                iconSpan.innerHTML = pinIconSvg;
-                ctaBtn.appendChild(iconSpan);
-            }
+        const ctaIcon = makeIcon({
+            iconUrl: ctaCfg.iconUrl,
+            iconSvg: ctaCfg.iconSvg,
+            iconName: ctaCfg.iconName || 'pin',
+            icon: ctaCfg.icon,
+            iconColor: ctaCfg.iconColor,
+            size: ctaCfg.iconSize ?? 20,
+            getNamedIcon: getIconSvgByName
+        });
+        if (ctaIcon) {
+            ctaIcon.classList?.add('yx-cta-icon');
+            ctaBtn.appendChild(ctaIcon);
         }
-        ctaBtn.appendChild(document.createTextNode(ctaCfg.text));
+        appendText(ctaBtn, ctaCfg.text);
     }
 
     const _renderScrollableSection = (items = [], type = 'card') => {
@@ -75,8 +93,8 @@ function _buildDetailedContent(panel, banner, isMobile) {
                 card.appendChild(img);
 
                 const cardContent = el('div', { padding: '8px 12px', flexGrow: '1', display: 'flex', flexDirection: 'column' });
-                const tag = el('div', { fontSize: '12px', opacity: '0.7', marginBottom: '4px' }); tag.textContent = item.tag; cardContent.appendChild(tag);
-                const title = el('div', { fontWeight: '600', fontSize: '14px', lineHeight: '1.4', height: '39.2px', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', webkitLineClamp: '2', webkitBoxOrient: 'vertical' }); title.textContent = item.title; cardContent.appendChild(title);
+                const tag = el('div', { fontSize: '12px', opacity: '0.7', marginBottom: '4px' }); setText(tag, item.tag); cardContent.appendChild(tag);
+                const title = el('div', { fontWeight: '600', fontSize: '14px', lineHeight: '1.4', height: '39.2px', overflow: 'hidden', textOverflow: 'ellipsis', display: '-webkit-box', webkitLineClamp: '2', webkitBoxOrient: 'vertical' }); setText(title, item.title); cardContent.appendChild(title);
                 card.appendChild(cardContent); container.appendChild(card);
             } else if (type === 'partner' && item.logoUrl) {
                 const link = el('a', { display: 'inline-block', flexShrink: '0' });
@@ -93,14 +111,14 @@ function _buildDetailedContent(panel, banner, isMobile) {
     if (content.cards?.length) {
         const cardsTitle = el('h3', { fontSize: '16px', fontWeight: '600', margin: '0 0 12px' });
         // NEW VARIABLE: cardsTitle
-        cardsTitle.textContent = content.cardsTitle || 'Take a look at what you can find';
+        setText(cardsTitle, content.cardsTitle || 'Take a look at what you can find');
         rightColContent.appendChild(cardsTitle);
         rightColContent.appendChild(_renderScrollableSection(content.cards, 'card'));
     }
     if (content.partners?.length) {
         const partnersTitle = el('h3', { fontSize: '16px', fontWeight: '600', margin: '20px 0 12px' });
         // NEW VARIABLE: partnersTitle
-        partnersTitle.textContent = content.partnersTitle || 'Our Partners';
+        setText(partnersTitle, content.partnersTitle || 'Our Partners');
         rightColContent.appendChild(partnersTitle);
         rightColContent.appendChild(_renderScrollableSection(content.partners, 'partner'));
     }
@@ -108,7 +126,7 @@ function _buildDetailedContent(panel, banner, isMobile) {
     if (isMobile) {
         const mobileCol = el('div', { display: 'flex', flexDirection: 'column', minWidth: '0' });
         if (eventLogoEl) mobileCol.appendChild(eventLogoEl);
-        if (titleEl) mobileCol.appendChild(titleEl);
+        if (titleGroup) mobileCol.appendChild(titleGroup);
         if (descriptionEl) mobileCol.appendChild(descriptionEl);
         mobileCol.appendChild(rightColContent);
         if (ctaBtn) mobileCol.appendChild(ctaBtn);
@@ -121,7 +139,7 @@ function _buildDetailedContent(panel, banner, isMobile) {
         rightCol.className = 'yx-right-col';
 
         if (eventLogoEl) leftCol.appendChild(eventLogoEl);
-        if (titleEl) leftCol.appendChild(titleEl);
+        if (titleGroup) leftCol.appendChild(titleGroup);
         if (descriptionEl) leftCol.appendChild(descriptionEl);
         if (ctaBtn) leftCol.appendChild(ctaBtn);
         rightCol.appendChild(rightColContent);
@@ -134,7 +152,7 @@ function _buildDetailedContent(panel, banner, isMobile) {
 /* =========================================================
  [C-2] Classic Banner Content Builder
 ========================================================= */
-function _buildClassicContent(panel, banner, closeFn) {
+function _buildClassicContent(panel, banner) {
     const content = banner.content || {};
     const ctaCfg = banner.cta || {};
 
@@ -160,13 +178,36 @@ function _buildClassicContent(panel, banner, closeFn) {
     // --- Column 1: Title ---
     const titleCol = el('div', { flex: '1 1 30%' });
     titleCol.classList.add('yx-title-col');
-    if (content.title) { const titleEl = el('div', { fontWeight: '600', fontSize: '20px', lineHeight: '1.3' }); titleEl.classList.add('yx-title-text'); titleEl.textContent = content.title; titleCol.appendChild(titleEl); }
+    const contentIconEl = makeIcon({
+        iconUrl: content.iconUrl,
+        iconSvg: content.iconSvg,
+        iconName: content.iconName,
+        icon: content.icon,
+        iconColor: content.iconColor,
+        size: content.iconSize ?? 22,
+        getNamedIcon: getIconSvgByName
+    });
+    if (content.title) {
+        const titleWrap = contentIconEl ? el('div', { display: 'flex', alignItems: 'center', gap: '8px' }) : titleCol;
+        const titleEl = el('div', { fontWeight: '600', fontSize: '20px', lineHeight: '1.3' });
+        titleEl.classList.add('yx-title-text');
+        setText(titleEl, content.title);
+        if (contentIconEl) {
+            titleWrap.appendChild(contentIconEl);
+            titleWrap.appendChild(titleEl);
+            titleCol.appendChild(titleWrap);
+        } else {
+            titleCol.appendChild(titleEl);
+        }
+    } else if (contentIconEl) {
+        titleCol.appendChild(contentIconEl);
+    }
     inner.appendChild(titleCol);
 
     // --- Column 2: Description ---
     const descCol = el('div', { flex: '1 1 45%' });
     descCol.classList.add('yx-description-col');
-    if (content.description) { const descEl = el('div', { fontSize: '15px', opacity: '0.85', lineHeight: '1.4' }); descEl.textContent = content.description; descCol.appendChild(descEl); }
+    if (content.description) { const descEl = el('div', { fontSize: '15px', opacity: '0.85', lineHeight: '1.4' }); setText(descEl, content.description); descCol.appendChild(descEl); }
     inner.appendChild(descCol);
 
     // --- Column 3: Button ---
@@ -175,17 +216,23 @@ function _buildClassicContent(panel, banner, closeFn) {
         const ctaBtn = el('a', { display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', background: ctaCfg.bg || '#c95624', color: ctaCfg.color || '#fff', padding: '12px 18px', borderRadius: '10px', textDecoration: 'none', fontWeight: '600', whiteSpace: 'nowrap' });
         ctaBtn.classList.add('yx-cta-btn');
         ctaBtn.href = ctaCfg.url; ctaBtn.target = '_blank'; ctaBtn.rel = 'noopener';
+        applyBorder(ctaBtn, ctaCfg.border);
 
-        if (ctaCfg.iconUrl) {
-            const img = el('img', { width: '20px', height: '20px', objectFit: 'contain', display: 'block' });
-            img.src = ctaCfg.iconUrl;
-            ctaBtn.appendChild(img);
-        } else {
-            const pinIconSvg = getIconSvgByName('pin');
-            if (pinIconSvg) { const iconSpan = el('span', { display: 'flex', alignItems: 'center' }); iconSpan.innerHTML = pinIconSvg; ctaBtn.appendChild(iconSpan); }
+        const ctaIcon = makeIcon({
+            iconUrl: ctaCfg.iconUrl,
+            iconSvg: ctaCfg.iconSvg,
+            iconName: ctaCfg.iconName || 'pin',
+            icon: ctaCfg.icon,
+            iconColor: ctaCfg.iconColor,
+            size: ctaCfg.iconSize ?? 20,
+            getNamedIcon: getIconSvgByName
+        });
+        if (ctaIcon) {
+            ctaIcon.classList?.add('yx-cta-icon');
+            ctaBtn.appendChild(ctaIcon);
         }
 
-        ctaBtn.appendChild(document.createTextNode(ctaCfg.text));
+        appendText(ctaBtn, ctaCfg.text);
         buttonCol.appendChild(ctaBtn);
     }
     inner.appendChild(buttonCol);
@@ -216,6 +263,7 @@ export function openFlowingBanner({ anchorEl, banner = {}, onClose, overlayZBase
         transition: 'transform .3s cubic-bezier(.2,.8,.2,1), opacity .3s ease'
     });
     panel.classList.add('yx-panel');
+    applyBorder(panel, banner.border);
 
     const isMobile = window.screen.width <= 768;
     if (isMobile) { panel.classList.add('yx-mobile'); }
@@ -236,7 +284,7 @@ export function openFlowingBanner({ anchorEl, banner = {}, onClose, overlayZBase
     function close() {
         if (anchorEl) { window.removeEventListener('scroll', place, true); window.removeEventListener('resize', place); }
         panel.style.transform = initialTransform; panel.style.opacity = '0';
-        panel.addEventListener('transitionend', () => { panel.remove(); onClose && onClose(); }, { once: true });
+        panel.addEventListener('transitionend', () => { panel.remove(); if (onClose) onClose(); }, { once: true });
     }
 
     // --- CONDITIONAL CLOSE BUTTON CREATION ---

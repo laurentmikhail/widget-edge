@@ -1,4 +1,4 @@
-import { el, toUnit } from './utils.js';
+import { appendText, applyBorder, el, makeIcon, toUnit } from './utils.js';
 import { getIconSvgByName } from './icons.js';
 import { openFlowingBanner } from './banner.js';
 
@@ -12,6 +12,7 @@ export function renderTrigger(root, cfg, ctx) {
     btn.style.transition = 'background .2s ease, transform .2s ease, opacity .2s ease';
     btn.style.display = 'inline-flex'; btn.style.justifyContent = 'center'; btn.style.alignItems = 'center';
     btn.style.gap = t.iconOnly ? '0' : '8px'; btn.style.boxShadow = '0 4px 12px rgba(0,0,0,.15)';
+    applyBorder(btn, t.border);
 
     if (t.colors?.hover) {
         btn.addEventListener('mouseenter', () => btn.style.background = t.colors.hover);
@@ -37,26 +38,18 @@ export function renderTrigger(root, cfg, ctx) {
         btn.style.padding = '0 16px';
     }
 
-    let iconEl;
-    if (t.iconUrl) {
-        iconEl = el('img', { width: '24px', height: '24px', objectFit: 'contain', display: 'block' });
-        iconEl.src = t.iconUrl;
-    } else if (t.iconSvg) {
-        iconEl = el('span', { width: '20px', height: '20px', display: 'flex', alignItems: 'center' });
-        iconEl.innerHTML = t.iconSvg;
-    } else if (t.iconName) {
-        const svg = getIconSvgByName(t.iconName);
-        if (svg) {
-            iconEl = el('span', { width: '20px', height: '20px', display: 'flex', alignItems: 'center', color: t.iconColor || 'currentColor' });
-            iconEl.innerHTML = svg;
-        }
-    } else if (t.icon) {
-        iconEl = el('span', { color: t.iconColor || 'currentColor', fontSize: '18px', lineHeight: '1' });
-        iconEl.textContent = t.icon;
-    }
+    const iconEl = makeIcon({
+        iconUrl: t.iconUrl,
+        iconSvg: t.iconSvg,
+        iconName: t.iconName,
+        icon: t.icon,
+        iconColor: t.iconColor,
+        size: t.iconSize ?? 24,
+        getNamedIcon: getIconSvgByName
+    });
 
     if (iconEl) btn.appendChild(iconEl);
-    if (!t.iconOnly) btn.appendChild(document.createTextNode(t.text || 'Click'));
+    if (!t.iconOnly) appendText(btn, t.text || 'Click');
     root.appendChild(btn);
 
     let activeBanner = null;
