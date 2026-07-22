@@ -275,7 +275,7 @@ export function openFlowingBanner({ anchorEl, banner = {}, onClose, overlayZBase
     .yx-panel.yx-mobile .yx-title-text { font-size: 18px !important; line-height: 1.1 !important; }
     .yx-panel.yx-mobile .yx-banner-inner { gap: 10px !important; padding: 12px 10px 12px 16px !important; }
     .yx-panel.yx-mobile .yx-cta-btn { padding: 8px 12px !important; font-size: 14px !important; min-width: 100px; justify-content: center; }
-    .yx-panel.yx-mobile .yx-cta-btn span { display: none !important; }
+    .yx-panel.yx-mobile .yx-cta-btn span:not(.yx-cta-icon) { display: none !important; }
     .yx-panel.yx-mobile .yx-main-container { padding: 24px 15px !important; }
     .yx-panel.yx-mobile h2 { font-size: 24px !important; }
   `;
