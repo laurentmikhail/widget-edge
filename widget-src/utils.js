@@ -42,17 +42,25 @@ export function applyBorder(node, border) {
 export function makeIcon({ iconUrl, iconSvg, iconName, icon, iconColor, iconMask, size = 20, getNamedIcon } = {}) {
     const iconSize = toUnit(size);
     const color = iconColor || 'currentColor';
+    const maskValue = typeof iconMask === 'string' ? iconMask.toLowerCase() : iconMask;
+    const shouldMask = maskValue === true || maskValue === 'true' || maskValue === 'yes' || maskValue === 'on';
 
     if (iconUrl) {
-        if (iconColor && iconMask === true) {
+        if (iconColor && shouldMask) {
             return el('span', {
                 width: iconSize,
                 height: iconSize,
                 display: 'inline-block',
                 flexShrink: '0',
                 backgroundColor: color,
-                WebkitMask: `url("${iconUrl}") center / contain no-repeat`,
-                mask: `url("${iconUrl}") center / contain no-repeat`
+                WebkitMaskImage: `url("${iconUrl}")`,
+                WebkitMaskPosition: 'center',
+                WebkitMaskSize: 'contain',
+                WebkitMaskRepeat: 'no-repeat',
+                maskImage: `url("${iconUrl}")`,
+                maskPosition: 'center',
+                maskSize: 'contain',
+                maskRepeat: 'no-repeat'
             });
         }
         const img = el('img', { width: iconSize, height: iconSize, objectFit: 'contain', display: 'block', flexShrink: '0' });
