@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "build:widget": "esbuild widget-src/index.js --bundle --minify --outfile=public/loader.v1.js",
+    "dev:widget": "esbuild widget-src/index.js --bundle --sourcemap --outfile=public/loader.v1.js --watch",
     "start": "next start",
     "lint": "eslint"
   },

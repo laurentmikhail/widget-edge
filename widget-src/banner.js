@@ -7,6 +7,11 @@ import { getIconSvgByName } from './icons.js';
 function _buildDetailedContent(panel, banner, isMobile) {
     const content = banner.content || {};
     const ctaCfg = banner.cta || {};
+    const descriptionMarginLeft = content.descriptionMarginLeft ?? content.descriptionIndent ?? content.descriptionMargin;
+    const descriptionWeight = content.descriptionWeight ?? content.descriptionFontWeight;
+    const descriptionLineHeight = content.descriptionLineHeight;
+    const descriptionFontSize = content.descriptionFontSize;
+    const titleIconGap = content.titleIconGap;
 
     // --- Background Logic ---
     panel.style.backgroundColor = banner.background?.color || '#fff';
@@ -41,7 +46,7 @@ function _buildDetailedContent(panel, banner, isMobile) {
         icon: content.icon,
         iconColor: content.iconColor,
         iconMask: content.iconMask,
-        size: content.iconSize ?? 28,
+        size: content.iconSize ?? 38,
         getNamedIcon: getIconSvgByName
     });
     if (contentIconEl) {
@@ -52,14 +57,24 @@ function _buildDetailedContent(panel, banner, isMobile) {
     const titleEl = content.title ? el('h2', { fontSize: '28px', fontWeight: '800', margin: contentIconEl ? '0' : '0 0 12px', lineHeight: '1.2' }) : null;
     if (titleEl) setText(titleEl, content.title);
 
-    const titleGroup = contentIconEl || titleEl ? el('div', { display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '12px' }) : null;
+    const titleGroup = contentIconEl || titleEl ? el('div', { display: 'flex', alignItems: 'flex-start', gap: toUnit(titleIconGap ?? 10), marginBottom: '12px' }) : null;
     if (titleGroup) {
+        titleGroup.classList.add('yx-title-wrap');
         if (contentIconEl) titleGroup.appendChild(contentIconEl);
         if (titleEl) titleGroup.appendChild(titleEl);
     }
 
-    const descriptionEl = content.description ? el('p', { fontSize: '16px', margin: '0 0 24px', opacity: '0.8' }) : null;
-    if (descriptionEl) setText(descriptionEl, content.description);
+    const descriptionEl = content.description ? el('p', {
+        fontSize: toUnit(descriptionFontSize ?? 16),
+        margin: '0 0 24px',
+        opacity: '0.8',
+        lineHeight: descriptionLineHeight ? String(descriptionLineHeight) : '',
+        fontWeight: descriptionWeight ? String(descriptionWeight) : ''
+    }) : null;
+    if (descriptionEl) {
+        if (descriptionMarginLeft != null) descriptionEl.style.marginLeft = toUnit(descriptionMarginLeft);
+        setText(descriptionEl, content.description);
+    }
 
     // --- CTA Button ---
     let ctaBtn = null;
@@ -161,6 +176,11 @@ function _buildDetailedContent(panel, banner, isMobile) {
 function _buildClassicContent(panel, banner) {
     const content = banner.content || {};
     const ctaCfg = banner.cta || {};
+    const descriptionMarginLeft = content.descriptionMarginLeft ?? content.descriptionIndent ?? content.descriptionMargin;
+    const descriptionWeight = content.descriptionWeight ?? content.descriptionFontWeight;
+    const descriptionLineHeight = content.descriptionLineHeight;
+    const descriptionFontSize = content.descriptionFontSize;
+    const titleIconGap = content.titleIconGap;
 
     // --- Background Logic ---
     panel.style.backgroundColor = banner.background?.color || '#0f172a';
@@ -191,13 +211,14 @@ function _buildClassicContent(panel, banner) {
         icon: content.icon,
         iconColor: content.iconColor,
         iconMask: content.iconMask,
-        size: content.iconSize ?? 22,
+        size: content.iconSize ?? 32,
         getNamedIcon: getIconSvgByName
     });
     if (contentIconEl) contentIconEl.classList?.add('yx-content-icon');
     if (content.title) {
-        const titleWrap = contentIconEl ? el('div', { display: 'flex', alignItems: 'center', gap: '8px' }) : titleCol;
-        const titleEl = el('div', { fontWeight: '600', fontSize: '20px', lineHeight: '1.3' });
+        const titleWrap = contentIconEl ? el('div', { display: 'flex', alignItems: 'center', gap: toUnit(titleIconGap ?? 8) }) : titleCol;
+        if (contentIconEl) titleWrap.classList.add('yx-title-wrap');
+        const titleEl = el('div', { fontWeight: '600', fontSize: '20px', lineHeight: '1.2' });
         titleEl.classList.add('yx-title-text');
         setText(titleEl, content.title);
         if (contentIconEl) {
@@ -213,9 +234,19 @@ function _buildClassicContent(panel, banner) {
     inner.appendChild(titleCol);
 
     // --- Column 2: Description ---
-    const descCol = el('div', { flex: '1 1 45%' });
+    const descCol = el('div', { flex: '1 1 45%', boxSizing: 'border-box' });
     descCol.classList.add('yx-description-col');
-    if (content.description) { const descEl = el('div', { fontSize: '15px', opacity: '0.85', lineHeight: '1.4' }); setText(descEl, content.description); descCol.appendChild(descEl); }
+    if (descriptionMarginLeft != null) descCol.style.paddingLeft = toUnit(descriptionMarginLeft);
+    if (content.description) {
+        const descEl = el('div', {
+            fontSize: toUnit(descriptionFontSize ?? 15),
+            opacity: '0.85',
+            lineHeight: descriptionLineHeight ? String(descriptionLineHeight) : '1.4',
+            fontWeight: descriptionWeight ? String(descriptionWeight) : ''
+        });
+        setText(descEl, content.description);
+        descCol.appendChild(descEl);
+    }
     inner.appendChild(descCol);
 
     // --- Column 3: Button ---
@@ -272,6 +303,7 @@ export function openFlowingBanner({ anchorEl, banner = {}, onClose, overlayZBase
         transition: 'transform .3s cubic-bezier(.2,.8,.2,1), opacity .3s ease'
     });
     panel.classList.add('yx-panel');
+    panel.classList.add(banner.layout === 'detailed' ? 'yx-layout-detailed' : 'yx-layout-classic');
     applyBorder(panel, banner.border);
 
     const isMobile = window.screen.width <= 768;
@@ -285,8 +317,36 @@ export function openFlowingBanner({ anchorEl, banner = {}, onClose, overlayZBase
     .yx-panel.yx-mobile .yx-banner-inner { gap: 10px !important; padding: 12px 10px 12px 16px !important; }
     .yx-panel.yx-mobile .yx-cta-btn { padding: 8px 12px !important; font-size: 14px !important; min-width: 100px; justify-content: center; }
     .yx-panel.yx-mobile .yx-cta-btn span:not(.yx-cta-icon) { display: none !important; }
+    .yx-panel.yx-mobile.yx-layout-classic .yx-content-icon { width: 22px !important; height: 22px !important; }
+    .yx-panel.yx-mobile.yx-layout-detailed .yx-content-icon { width: 28px !important; height: 28px !important; }
+    .yx-panel.yx-mobile.yx-layout-classic .yx-title-wrap { gap: 8px !important; }
+    .yx-panel.yx-mobile.yx-layout-detailed .yx-title-wrap { gap: 10px !important; }
     .yx-panel.yx-mobile .yx-main-container { padding: 24px 15px !important; }
     .yx-panel.yx-mobile h2 { font-size: 24px !important; }
+    @media (max-width: 390px) {
+      .yx-panel.yx-mobile.yx-layout-classic .yx-title-text {
+        font-size: 14px !important;
+        line-height: 1.1 !important;
+      }
+      .yx-panel.yx-mobile.yx-layout-classic .yx-title-col {
+        flex-basis: calc(100% - 76px) !important;
+      }
+      .yx-panel.yx-mobile.yx-layout-classic .yx-banner-inner {
+        gap: 4px !important;
+        padding-right: 6px !important;
+      }
+      .yx-panel.yx-mobile.yx-layout-classic .yx-cta-btn {
+        min-width: 68px !important;
+        padding-left: 8px !important;
+        padding-right: 8px !important;
+        font-size: 12px !important;
+        gap: 4px !important;
+      }
+      .yx-panel.yx-mobile.yx-layout-classic .yx-cta-icon {
+        width: 16px !important;
+        height: 16px !important;
+      }
+    }
   `;
     panel.appendChild(styles);
 
