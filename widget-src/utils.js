@@ -47,10 +47,12 @@ export function makeIcon({ iconUrl, iconSvg, iconName, icon, iconColor, iconMask
 
     if (iconUrl) {
         if (iconColor && shouldMask) {
-            return el('span', {
+            const span = el('span', {
                 width: iconSize,
                 height: iconSize,
-                display: 'inline-block',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
                 flexShrink: '0',
                 backgroundColor: color,
                 WebkitMaskImage: `url("${iconUrl}")`,
@@ -62,6 +64,8 @@ export function makeIcon({ iconUrl, iconSvg, iconName, icon, iconColor, iconMask
                 maskSize: 'contain',
                 maskRepeat: 'no-repeat'
             });
+            inlineSvgIcon(iconUrl, span);
+            return span;
         }
         const img = el('img', { width: iconSize, height: iconSize, objectFit: 'contain', display: 'block', flexShrink: '0' });
         img.src = iconUrl;
@@ -83,4 +87,31 @@ export function makeIcon({ iconUrl, iconSvg, iconName, icon, iconColor, iconMask
     }
 
     return null;
+}
+
+function inlineSvgIcon(iconUrl, target) {
+    fetch(iconUrl)
+        .then((response) => response.ok ? response.text() : '')
+        .then((svgText) => {
+            if (!svgText || !/<svg[\s>]/i.test(svgText)) return;
+            target.style.backgroundColor = 'transparent';
+            target.style.WebkitMaskImage = '';
+            target.style.maskImage = '';
+            target.innerHTML = sanitizeSvg(svgText);
+            const svg = target.querySelector('svg');
+            if (!svg) return;
+            svg.style.width = '100%';
+            svg.style.height = '100%';
+            svg.style.display = 'block';
+        })
+        .catch(() => { });
+}
+
+function sanitizeSvg(svgText) {
+    return svgText
+        .replace(/<script[\s\S]*?<\/script>/gi, '')
+        .replace(/\son\w+="[^"]*"/gi, '')
+        .replace(/\son\w+='[^']*'/gi, '')
+        .replace(/\sfill=(["'])(?!none\1)[^"']*\1/gi, ' fill="currentColor"')
+        .replace(/\sstroke=(["'])(?!none\1)[^"']*\1/gi, ' stroke="currentColor"');
 }
