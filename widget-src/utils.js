@@ -39,12 +39,12 @@ export function applyBorder(node, border) {
     node.style.border = `${width} solid ${color}`;
 }
 
-export function makeIcon({ iconUrl, iconSvg, iconName, icon, iconColor, size = 20, getNamedIcon } = {}) {
+export function makeIcon({ iconUrl, iconSvg, iconName, icon, iconColor, iconMask, size = 20, getNamedIcon } = {}) {
     const iconSize = toUnit(size);
     const color = iconColor || 'currentColor';
 
     if (iconUrl) {
-        if (iconColor) {
+        if (iconColor && iconMask === true) {
             return el('span', {
                 width: iconSize,
                 height: iconSize,

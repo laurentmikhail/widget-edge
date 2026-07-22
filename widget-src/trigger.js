@@ -44,6 +44,7 @@ export function renderTrigger(root, cfg, ctx) {
         iconName: t.iconName,
         icon: t.icon,
         iconColor: t.iconColor,
+        iconMask: t.iconMask,
         size: t.iconSize ?? 24,
         getNamedIcon: getIconSvgByName
     });

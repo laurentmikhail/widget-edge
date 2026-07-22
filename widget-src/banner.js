@@ -40,6 +40,7 @@ function _buildDetailedContent(panel, banner, isMobile) {
         iconName: content.iconName,
         icon: content.icon,
         iconColor: content.iconColor,
+        iconMask: content.iconMask,
         size: content.iconSize ?? 28,
         getNamedIcon: getIconSvgByName
     });
@@ -71,6 +72,7 @@ function _buildDetailedContent(panel, banner, isMobile) {
             iconName: ctaCfg.iconName || 'pin',
             icon: ctaCfg.icon,
             iconColor: ctaCfg.iconColor,
+            iconMask: ctaCfg.iconMask,
             size: ctaCfg.iconSize ?? 20,
             getNamedIcon: getIconSvgByName
         });
@@ -184,6 +186,7 @@ function _buildClassicContent(panel, banner) {
         iconName: content.iconName,
         icon: content.icon,
         iconColor: content.iconColor,
+        iconMask: content.iconMask,
         size: content.iconSize ?? 22,
         getNamedIcon: getIconSvgByName
     });
@@ -224,6 +227,7 @@ function _buildClassicContent(panel, banner) {
             iconName: ctaCfg.iconName || 'pin',
             icon: ctaCfg.icon,
             iconColor: ctaCfg.iconColor,
+            iconMask: ctaCfg.iconMask,
             size: ctaCfg.iconSize ?? 20,
             getNamedIcon: getIconSvgByName
         });
