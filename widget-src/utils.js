@@ -47,6 +47,7 @@ export function makeIcon({ iconUrl, iconSvg, iconName, icon, iconColor, iconMask
 
     if (iconUrl) {
         if (iconColor && shouldMask) {
+            const fallbackSvg = getNamedIcon ? getNamedIcon(iconName || 'pin') : null;
             const span = el('span', {
                 width: iconSize,
                 height: iconSize,
@@ -54,6 +55,7 @@ export function makeIcon({ iconUrl, iconSvg, iconName, icon, iconColor, iconMask
                 alignItems: 'center',
                 justifyContent: 'center',
                 flexShrink: '0',
+                color,
                 backgroundColor: color,
                 WebkitMaskImage: `url("${iconUrl}")`,
                 WebkitMaskPosition: 'center',
@@ -64,6 +66,7 @@ export function makeIcon({ iconUrl, iconSvg, iconName, icon, iconColor, iconMask
                 maskSize: 'contain',
                 maskRepeat: 'no-repeat'
             });
+            if (fallbackSvg) span.dataset.fallbackSvg = fallbackSvg;
             inlineSvgIcon(iconUrl, span);
             return span;
         }
@@ -93,7 +96,10 @@ function inlineSvgIcon(iconUrl, target) {
     fetch(iconUrl)
         .then((response) => response.ok ? response.text() : '')
         .then((svgText) => {
-            if (!svgText || !/<svg[\s>]/i.test(svgText)) return;
+            if (!svgText || !/<svg[\s>]/i.test(svgText)) {
+                renderFallbackSvg(target);
+                return;
+            }
             target.style.backgroundColor = 'transparent';
             target.style.WebkitMaskImage = '';
             target.style.maskImage = '';
@@ -104,7 +110,16 @@ function inlineSvgIcon(iconUrl, target) {
             svg.style.height = '100%';
             svg.style.display = 'block';
         })
-        .catch(() => { });
+        .catch(() => { renderFallbackSvg(target); });
+}
+
+function renderFallbackSvg(target) {
+    const fallbackSvg = target.dataset.fallbackSvg;
+    if (!fallbackSvg) return;
+    target.style.backgroundColor = 'transparent';
+    target.style.WebkitMaskImage = '';
+    target.style.maskImage = '';
+    target.innerHTML = fallbackSvg;
 }
 
 function sanitizeSvg(svgText) {

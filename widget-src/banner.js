@@ -37,13 +37,17 @@ function _buildDetailedContent(panel, banner, isMobile) {
     const contentIconEl = makeIcon({
         iconUrl: content.iconUrl,
         iconSvg: content.iconSvg,
-        iconName: content.iconName,
+        iconName: content.iconName || (content.iconUrl ? null : 'pin'),
         icon: content.icon,
         iconColor: content.iconColor,
         iconMask: content.iconMask,
         size: content.iconSize ?? 28,
         getNamedIcon: getIconSvgByName
     });
+    if (contentIconEl) {
+        contentIconEl.classList?.add('yx-content-icon');
+        contentIconEl.style.marginTop = '2px';
+    }
 
     const titleEl = content.title ? el('h2', { fontSize: '28px', fontWeight: '800', margin: contentIconEl ? '0' : '0 0 12px', lineHeight: '1.2' }) : null;
     if (titleEl) setText(titleEl, content.title);
@@ -183,13 +187,14 @@ function _buildClassicContent(panel, banner) {
     const contentIconEl = makeIcon({
         iconUrl: content.iconUrl,
         iconSvg: content.iconSvg,
-        iconName: content.iconName,
+        iconName: content.iconName || (content.iconUrl ? null : 'pin'),
         icon: content.icon,
         iconColor: content.iconColor,
         iconMask: content.iconMask,
         size: content.iconSize ?? 22,
         getNamedIcon: getIconSvgByName
     });
+    if (contentIconEl) contentIconEl.classList?.add('yx-content-icon');
     if (content.title) {
         const titleWrap = contentIconEl ? el('div', { display: 'flex', alignItems: 'center', gap: '8px' }) : titleCol;
         const titleEl = el('div', { fontWeight: '600', fontSize: '20px', lineHeight: '1.3' });
