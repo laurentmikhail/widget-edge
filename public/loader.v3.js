@@ -168,7 +168,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 154px;
+  min-width: 150px;
   min-height: 44px;
   background: var(--f250-gold-light);
   background-image: var(--f250-gold-gradient);
@@ -177,9 +177,9 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-weight: 700;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1;
-  padding: 12px 24px;
+  padding: 12px 18px;
   border-radius: 4px;
   text-decoration: none;
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.22);
@@ -273,8 +273,8 @@
   .f250-cta {
     width: 100%;
     min-height: 44px;
-    font-size: 16px;
-    padding: 12px 24px;
+    font-size: 14px;
+    padding: 13px;
   }
 
   .f250-close {
