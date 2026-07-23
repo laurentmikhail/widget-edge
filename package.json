@@ -7,6 +7,8 @@
     "build": "next build",
     "build:widget": "esbuild widget-src/index.js --bundle --minify --outfile=public/loader.v1.js",
     "dev:widget": "esbuild widget-src/index.js --bundle --sourcemap --outfile=public/loader.v1.js --watch",
+    "build:widget:v3": "esbuild widget-src/v3/index.js --bundle --minify --outfile=public/loader.v3.js",
+    "dev:widget:v3": "esbuild widget-src/v3/index.js --bundle --sourcemap --outfile=public/loader.v3.js --watch",
     "start": "next start",
     "lint": "eslint"
   },
