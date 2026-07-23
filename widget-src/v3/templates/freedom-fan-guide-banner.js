@@ -283,20 +283,21 @@ function buildStyles(cfg) {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 150px;
+  min-width: 154px;
   min-height: 44px;
   background: var(--f250-gold-light);
   background-image: var(--f250-gold-gradient);
-  color: #3a2708;
+  color: var(--f250-navy);
   font-family: var(--f250-condensed);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.06em;
   font-weight: 700;
-  font-size: 14px;
-  padding: 12px 18px;
-  border-radius: 6px;
+  font-size: 16px;
+  line-height: 1;
+  padding: 12px 24px;
+  border-radius: 4px;
   text-decoration: none;
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.22), 0 8px 18px rgba(0,0,0,0.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.22);
   white-space: nowrap;
 }
 
@@ -387,8 +388,8 @@ function buildStyles(cfg) {
   .f250-cta {
     width: 100%;
     min-height: 44px;
-    font-size: 14px;
-    padding: 13px;
+    font-size: 16px;
+    padding: 12px 24px;
   }
 
   .f250-close {
