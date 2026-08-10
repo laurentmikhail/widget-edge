@@ -1,9 +1,9 @@
-"use strict";(()=>{var c="https://pibfkswjeidelzxxvzsg.supabase.co/storage/v1/object/public/widget-assets/freedom-250",C={eyebrow:"KNOW BEFORE YOU GO",title:"The Digital Fan Guide is live!",description:"Build your race-day itinerary with interactive maps, guides & schedules - right at your fingertips.",ctaText:"Get Started",ctaUrl:"#",imageUrl:`${c}/fan-guide-map.png`,maxWidth:940,zIndex:2147483647,colors:{navy:"#16224C",navyDark:"#0E1734",red:"#CF1B2F",goldLight:"#EBB34C",goldMid:"#D89B3E",goldDeep:"#B96C1E"},fonts:{baskervville:`${c}/Baskervville-Variable.ttf`,baskervvilleItalic:`${c}/Baskervville-Italic-Variable.ttf`,eurostile:`${c}/Eurostile-Oblique.otf`,eurostileBold:`${c}/Eurostile-BoldOblique.otf`,vintageGoods:`${c}/VintageGoods.otf`}};function k(){return{...C}}function v(t={}){let e=F(C,t),n=document.createElement("div");n.setAttribute("data-widget-template","freedom-fan-guide-banner");let u=n.attachShadow?n.attachShadow({mode:"open"}):n,g=document.createElement("style");g.textContent=B(e),u.appendChild(g);let h=i("div","f250-widget-shell"),r=i("section","f250-banner");r.setAttribute("aria-label",e.ariaLabel||"Digital fan guide");let m=i("div","f250-rule");r.appendChild(m);let o=i("div","f250-image-panel"),a=document.createElement("img");a.src=e.imageUrl,a.alt=e.imageAlt||"Course map",a.loading="lazy",a.decoding="async",a.className="f250-map",o.appendChild(a);let d=i("div","f250-image-overlay");o.appendChild(d),o.appendChild(E(e.liveLabel||"Live")),r.appendChild(o);let s=i("div","f250-content"),l=i("span","f250-eyebrow");l.textContent=e.eyebrow,s.appendChild(l);let x=document.createElement("h3");x.className="f250-title",x.textContent=e.title,s.appendChild(x);let b=document.createElement("p");b.className="f250-description",b.textContent=e.description,s.appendChild(b),r.appendChild(s);let y=i("div","f250-actions"),f=document.createElement("a");f.className="f250-cta",f.href=e.ctaUrl||"#",f.target=e.ctaTarget||"_blank",f.rel="noopener noreferrer",f.textContent=e.ctaText||"Get Started",y.appendChild(f);let p=document.createElement("button");return p.className="f250-close",p.type="button",p.setAttribute("aria-label",e.closeLabel||"Dismiss"),p.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>',p.addEventListener("click",()=>n.remove()),y.appendChild(p),r.appendChild(y),h.appendChild(r),u.appendChild(h),document.body.appendChild(n),{host:n,close:()=>n.remove()}}function E(t){let e=i("span","f250-live-badge"),n=i("span","f250-live-dot");return e.appendChild(n),e.appendChild(document.createTextNode(t)),e}function B(t){let e=t.colors||{},n=t.fonts||{};return`
+"use strict";(()=>{var c="https://pibfkswjeidelzxxvzsg.supabase.co/storage/v1/object/public/widget-assets/freedom-250",k={eyebrow:"KNOW BEFORE YOU GO",title:"The Digital Fan Guide is live!",description:"Build your race-day itinerary with interactive maps, guides & schedules - right at your fingertips.",ctaText:"Get Started",ctaUrl:"#",imageUrl:`${c}/fan-guide-map.png`,maxWidth:940,zIndex:2147483647,colors:{navy:"#16224C",navyDark:"#0E1734",red:"#CF1B2F",goldLight:"#EBB34C",goldMid:"#D89B3E",goldDeep:"#B96C1E"},fonts:{baskervville:`${c}/Baskervville-Variable.ttf`,baskervvilleItalic:`${c}/Baskervville-Italic-Variable.ttf`,eurostile:`${c}/Eurostile-Oblique.otf`,eurostileBold:`${c}/Eurostile-BoldOblique.otf`,vintageGoods:`${c}/VintageGoods.otf`}};function E(){return{...k}}function v(e={}){let t=L(k,e),n=$(t);if(z(n))return{host:null,close:()=>{}};let o=document.createElement("div");o.setAttribute("data-widget-template","freedom-fan-guide-banner");let g=o.attachShadow?o.attachShadow({mode:"open"}):o,m=document.createElement("style");m.textContent=F(t),g.appendChild(m);let u=r("div","f250-widget-shell"),a=r("section","f250-banner");a.setAttribute("aria-label",t.ariaLabel||"Digital fan guide");let s=r("div","f250-rule");a.appendChild(s);let l=r("div","f250-image-panel"),i=document.createElement("img");i.src=t.imageUrl,i.alt=t.imageAlt||"Course map",i.loading="lazy",i.decoding="async",i.className="f250-map",l.appendChild(i);let h=r("div","f250-image-overlay");l.appendChild(h),l.appendChild(B(t.liveLabel||"Live")),a.appendChild(l);let d=r("div","f250-content"),w=r("span","f250-eyebrow");w.textContent=t.eyebrow,d.appendChild(w);let x=document.createElement("h3");x.className="f250-title",x.textContent=t.title,d.appendChild(x);let b=document.createElement("p");b.className="f250-description",b.textContent=t.description,d.appendChild(b),a.appendChild(d);let y=r("div","f250-actions"),f=document.createElement("a");f.className="f250-cta",f.href=t.ctaUrl||"#",f.target=t.ctaTarget||"_blank",f.rel="noopener noreferrer",f.textContent=t.ctaText||"Get Started",y.appendChild(f);let p=document.createElement("button");return p.className="f250-close",p.type="button",p.setAttribute("aria-label",t.closeLabel||"Dismiss"),p.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>',p.addEventListener("click",()=>{S(n),o.remove()}),y.appendChild(p),a.appendChild(y),u.appendChild(a),g.appendChild(u),document.body.appendChild(o),{host:o,close:()=>o.remove()}}function B(e){let t=r("span","f250-live-badge"),n=r("span","f250-live-dot");return t.appendChild(n),t.appendChild(document.createTextNode(e)),t}function F(e){let t=e.colors||{},n=e.fonts||{};return`
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Saira+Condensed:wght@500;600;700;800&display=swap');
 
 @font-face {
   font-family: 'F250 Baskervville';
-  src: url('${w(n.baskervville)}') format('truetype');
+  src: url('${C(n.baskervville)}') format('truetype');
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: 'F250 Eurostile';
-  src: url('${w(n.eurostileBold||n.eurostile)}') format('opentype');
+  src: url('${C(n.eurostileBold||n.eurostile)}') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -20,12 +20,12 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 :host {
-  --f250-navy: ${e.navy||"#16224C"};
-  --f250-navy-dark: ${e.navyDark||"#0E1734"};
-  --f250-red: ${e.red||"#CF1B2F"};
-  --f250-gold-light: ${e.goldLight||"#EBB34C"};
-  --f250-gold-mid: ${e.goldMid||"#D89B3E"};
-  --f250-gold-deep: ${e.goldDeep||"#B96C1E"};
+  --f250-navy: ${t.navy||"#16224C"};
+  --f250-navy-dark: ${t.navyDark||"#0E1734"};
+  --f250-red: ${t.red||"#CF1B2F"};
+  --f250-gold-light: ${t.goldLight||"#EBB34C"};
+  --f250-gold-mid: ${t.goldMid||"#D89B3E"};
+  --f250-gold-deep: ${t.goldDeep||"#B96C1E"};
   --f250-gold-gradient: linear-gradient(180deg, var(--f250-gold-light) 0%, var(--f250-gold-mid) 45%, var(--f250-gold-deep) 100%);
   --f250-display: 'F250 Baskervville', Georgia, 'Times New Roman', serif;
   --f250-sans: 'Libre Franklin', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -37,7 +37,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: ${Number(t.zIndex)||2147483647};
+  z-index: ${Number(e.zIndex)||2147483647};
   display: flex;
   justify-content: center;
   padding: 0 16px 20px;
@@ -49,7 +49,7 @@
   pointer-events: auto;
   position: relative;
   width: 100%;
-  max-width: ${$(t.maxWidth||940)};
+  max-width: ${D(e.maxWidth||940)};
   display: flex;
   align-items: stretch;
   background: var(--f250-navy-dark);
@@ -84,7 +84,7 @@
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transform: scale(1.9);
+  transform: scale(1.3);
   transform-origin: center;
 }
 
@@ -300,4 +300,4 @@
     animation: none;
   }
 }
-`}function F(t,e){let n={...t,...e};return n.colors={...t.colors||{},...e.colors||{}},n.fonts={...t.fonts||{},...e.fonts||{}},n}function i(t,e){let n=document.createElement(t);return e&&(n.className=e),n}function $(t){return typeof t=="number"?`${t}px`:String(t)}function w(t){return String(t||"").replace(/['"\\\n\r]/g,"")}function z(t){document.readyState!=="loading"?t():document.addEventListener("DOMContentLoaded",t)}async function L(t){if(t.dataset.widgetMounted==="true")return;t.dataset.widgetMounted="true";let e=t.dataset.widgetId,n=t.dataset.demo,u=t.dataset.template||n;if(n==="freedom-fan-guide-banner"){v(k());return}if(!e)return;let g=t.getAttribute("src"),h=g?new URL(g,document.baseURI).origin:location.origin||"",r=t.dataset.apiBase||h,m;try{let d=t.dataset.noCache==="true",s=d?`?t=${Date.now()}`:"",l=await fetch(`${r}/api/widget/${encodeURIComponent(e)}${s}`,{cache:d?"no-store":"default"});if(!l.ok)throw new Error(`Widget config failed: ${l.status}`);m=await l.json()}catch(d){console.error("[loader.v3] failed to load widget",d);return}let o=m?.config??m,a=o?.template||o?.type||u;if(a==="freedom-fan-guide-banner"){v(o?.settings||o?.banner||o);return}console.warn("[loader.v3] unknown template",a)}z(()=>{document.querySelectorAll('script[src*="loader.v3.js"]').forEach(L)});})();
+`}function $(e){return`f250-fan-guide-dismissed:${e.widgetId||"default"}`}function z(e){try{return sessionStorage.getItem(e)==="1"}catch{return!1}}function S(e){try{sessionStorage.setItem(e,"1")}catch{}}function L(e,t){let n={...e,...t};return n.colors={...e.colors||{},...t.colors||{}},n.fonts={...e.fonts||{},...t.fonts||{}},n}function r(e,t){let n=document.createElement(e);return t&&(n.className=t),n}function D(e){return typeof e=="number"?`${e}px`:String(e)}function C(e){return String(e||"").replace(/['"\\\n\r]/g,"")}function I(e){document.readyState!=="loading"?e():document.addEventListener("DOMContentLoaded",e)}async function G(e){if(e.dataset.widgetMounted==="true")return;e.dataset.widgetMounted="true";let t=e.dataset.widgetId,n=e.dataset.demo,o=e.dataset.template||n;if(n==="freedom-fan-guide-banner"){v({...E(),widgetId:"demo"});return}if(!t)return;let g=e.getAttribute("src"),m=g?new URL(g,document.baseURI).origin:location.origin||"",u=e.dataset.apiBase||m,a;try{let i=e.dataset.noCache==="true",h=i?`?t=${Date.now()}`:"",d=await fetch(`${u}/api/widget/${encodeURIComponent(t)}${h}`,{cache:i?"no-store":"default"});if(!d.ok)throw new Error(`Widget config failed: ${d.status}`);a=await d.json()}catch(i){console.error("[loader.v3] failed to load widget",i);return}let s=a?.config??a,l=s?.template||s?.type||o;if(l==="freedom-fan-guide-banner"){v({...s?.settings||s?.banner||s,widgetId:t});return}console.warn("[loader.v3] unknown template",l)}I(()=>{document.querySelectorAll('script[src*="loader.v3.js"]').forEach(G)});})();

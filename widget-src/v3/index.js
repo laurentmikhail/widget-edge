@@ -14,7 +14,7 @@ async function mount(scriptTag) {
     const template = scriptTag.dataset.template || demo;
 
     if (demo === 'freedom-fan-guide-banner') {
-        renderFreedomFanGuideBanner(demoFreedomFanGuideConfig());
+        renderFreedomFanGuideBanner({ ...demoFreedomFanGuideConfig(), widgetId: 'demo' });
         return;
     }
 
@@ -40,7 +40,7 @@ async function mount(scriptTag) {
     const resolvedTemplate = config?.template || config?.type || template;
 
     if (resolvedTemplate === 'freedom-fan-guide-banner') {
-        renderFreedomFanGuideBanner(config?.settings || config?.banner || config);
+        renderFreedomFanGuideBanner({ ...(config?.settings || config?.banner || config), widgetId: id });
         return;
     }
 

@@ -32,6 +32,11 @@ export function demoFreedomFanGuideConfig() {
 
 export function renderFreedomFanGuideBanner(config = {}) {
     const cfg = mergeConfig(DEFAULT_CONFIG, config);
+    const dismissKey = getDismissKey(cfg);
+    if (isDismissed(dismissKey)) {
+        return { host: null, close: () => {} };
+    }
+
     const host = document.createElement('div');
     host.setAttribute('data-widget-template', 'freedom-fan-guide-banner');
     const root = host.attachShadow ? host.attachShadow({ mode: 'open' }) : host;
@@ -91,7 +96,10 @@ export function renderFreedomFanGuideBanner(config = {}) {
     close.type = 'button';
     close.setAttribute('aria-label', cfg.closeLabel || 'Dismiss');
     close.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>';
-    close.addEventListener('click', () => host.remove());
+    close.addEventListener('click', () => {
+        markDismissed(dismissKey);
+        host.remove();
+    });
     actions.appendChild(close);
     banner.appendChild(actions);
 
@@ -199,7 +207,7 @@ function buildStyles(cfg) {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  transform: scale(1.9);
+  transform: scale(1.3);
   transform-origin: center;
 }
 
@@ -416,6 +424,26 @@ function buildStyles(cfg) {
   }
 }
 `;
+}
+
+function getDismissKey(cfg) {
+    return `f250-fan-guide-dismissed:${cfg.widgetId || 'default'}`;
+}
+
+function isDismissed(key) {
+    try {
+        return sessionStorage.getItem(key) === '1';
+    } catch {
+        return false;
+    }
+}
+
+function markDismissed(key) {
+    try {
+        sessionStorage.setItem(key, '1');
+    } catch {
+        // storage unavailable (e.g. private mode); dismissal just won't persist
+    }
 }
 
 function mergeConfig(base, override) {
