@@ -49,7 +49,7 @@ export async function GET(
     headers: {
       ...corsHeaders,
       'content-type': 'application/json',
-      'cache-control': 'public, max-age=15, s-maxage=300, stale-while-revalidate=600',
+      'cache-control': 'public, max-age=15, s-maxage=60, stale-while-revalidate=60',
     },
   });
 }
