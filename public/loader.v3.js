@@ -300,43 +300,43 @@
     animation: none;
   }
 }
-`}function j(t){return`f250-fan-guide-dismissed:${t.widgetId||"default"}`}function M(t){try{return sessionStorage.getItem(t)==="1"}catch{return!1}}function N(t){try{sessionStorage.setItem(t,"1")}catch{}}function O(t,e){let n={...t,...e};return n.colors={...t.colors||{},...e.colors||{}},n.fonts={...t.fonts||{},...e.fonts||{}},n}function g(t,e){let n=document.createElement(t);return e&&(n.className=e),n}function T(t){return typeof t=="number"?`${t}px`:String(t)}function $(t){return String(t||"").replace(/['"\\\n\r]/g,"")}var F=new URL("widget-assets/freshwater/",document.currentScript?.src||document.baseURI).href,G={title:"The Festival Guide is live",eyebrow:"Plan your festival day",liveLabel:"Now live",description:"Seven wine regions, three stages, three food zones \u2014 find it all on the map",mobileDescription:"Map, schedule & more",ctaText:"Open the Guide",ctaUrl:"https://map.visitmke.org/?event=visit-milwaukee&area=freshwater-food--wine-festival&floor=area-12-level-1&view=map&in-map=event",imageUrl:`${F}guide.png`,imageAlt:"Freshwater Festival Guide showing restaurants, the festival map and schedule",maxWidth:1180,zIndex:2147483647};function I(){return{...G}}function E(t={}){let e={...G,...t},n=document.createElement("div");n.setAttribute("data-widget-template","freshwater-guide-banner");let i=n.attachShadow({mode:"open"}),h=document.createElement("style"),w=Number(e.maxWidth)>0?Number(e.maxWidth):1180;h.textContent=`
+`}function j(t){return`f250-fan-guide-dismissed:${t.widgetId||"default"}`}function M(t){try{return sessionStorage.getItem(t)==="1"}catch{return!1}}function N(t){try{sessionStorage.setItem(t,"1")}catch{}}function O(t,e){let n={...t,...e};return n.colors={...t.colors||{},...e.colors||{}},n.fonts={...t.fonts||{},...e.fonts||{}},n}function g(t,e){let n=document.createElement(t);return e&&(n.className=e),n}function T(t){return typeof t=="number"?`${t}px`:String(t)}function $(t){return String(t||"").replace(/['"\\\n\r]/g,"")}var F=new URL("widget-assets/freshwater/",document.currentScript?.src||document.baseURI).href,G={title:"The Festival Guide is live",eyebrow:"Plan your festival day",liveLabel:"Now live",description:"Seven wine regions, three stages, three food zones \u2014 find it all on the map",mobileDescription:"Map, schedule & more",ctaText:"Open the Guide",ctaUrl:"https://map.visitmke.org/?event=visit-milwaukee&area=freshwater-food--wine-festival&floor=area-12-level-1&view=map&in-map=event",imageUrl:`${F}guide.png`,imageAlt:"Freshwater Festival Guide showing restaurants, the festival map and schedule",maxWidth:940,zIndex:2147483647};function I(){return{...G}}function E(t={}){let e={...G,...t},n=document.createElement("div");n.setAttribute("data-widget-template","freshwater-guide-banner");let i=n.attachShadow({mode:"open"}),h=document.createElement("style"),w=Number(e.maxWidth)>0?Math.min(Number(e.maxWidth),940):940;h.textContent=`
       ${[400,500,600].map(u=>`@font-face {font-family: 'Freshwater Poppins';font-weight:${u};font-style:normal;font-display:swap;src:url('${F}poppins-${u}.woff2') format('woff2');}`).join(`
 `)}
       :host {font-family:'Freshwater Poppins',system-ui,sans-serif;color:#fff;}
       *,*::before,*::after {box-sizing:border-box;}
       [hidden] {display:none!important;}
-      .shell {position:fixed;bottom:0;left:24px;right:24px;z-index:${Number(e.zIndex)||2147483647};pointer-events:none;display:flex;justify-content:center;}
-      .banner {pointer-events:auto;width:100%;max-width:${w}px;display:flex;background:#100f0f;border-top:3px solid #3a94ac;border-radius:16px 16px 0 0;overflow:hidden;box-shadow:0 -10px 34px rgba(16,15,15,.22);padding-bottom:env(safe-area-inset-bottom);animation:rise 340ms cubic-bezier(.2,.7,.3,1) both;max-height:85vh;overflow-y:auto;}
-      .image {flex:none;width:240px;position:relative;background:#1b1a19;}
+      .shell {position:fixed;bottom:0;left:16px;right:16px;z-index:${Number(e.zIndex)||2147483647};pointer-events:none;display:flex;justify-content:center;}
+      .banner {pointer-events:auto;width:100%;max-width:${w}px;display:flex;background:#100f0f;border-top:3px solid #3a94ac;border-radius:12px 12px 0 0;overflow:hidden;box-shadow:0 -10px 34px rgba(16,15,15,.22);padding-bottom:env(safe-area-inset-bottom);animation:rise 340ms cubic-bezier(.2,.7,.3,1) both;max-height:85vh;overflow-y:auto;}
+      .image {flex:none;width:132px;position:relative;background:#1b1a19;}
       .image img {position:absolute;width:100%;height:100%;object-fit:cover;object-position:center;}
-      .body {flex:1;min-width:0;display:flex;align-items:center;gap:28px;padding:28px 28px 34px;}
-      .content {display:grid;gap:10px;min-width:0;flex:1;}
-      .labels {display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
-      .live {font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:#2b7286;border-radius:999px;padding:4px 10px;}
-      .eyebrow {font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7ec6da;}
-      h3 {margin:0;font-size:38px;line-height:1.14;font-weight:600;letter-spacing:-.01em;text-wrap:pretty;}
-      p {margin:0;font-size:16px;line-height:1.5;color:#d6cfcb;max-width:52ch;}
+      .body {flex:1;min-width:0;display:flex;align-items:center;gap:16px;padding:20px 22px;}
+      .content {display:grid;gap:4px;min-width:0;flex:1;}
+      .labels {display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+      .live {font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:#2b7286;border-radius:999px;padding:3px 8px;}
+      .eyebrow {font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7ec6da;}
+      h3 {margin:0;font-size:24px;line-height:1.12;font-weight:600;letter-spacing:-.01em;text-wrap:pretty;}
+      p {margin:0;font-size:14px;line-height:1.45;color:#d6cfcb;max-width:52ch;}
       .mobile-description {display:none;}
-      .actions {flex:none;display:flex;align-items:center;gap:12px;}
-      a {display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:12px;background:#2b7286;color:#fff;font-size:16px;font-weight:500;text-decoration:none;white-space:nowrap;transition:background 180ms;}
+      .actions {flex:none;display:flex;align-items:center;gap:6px;}
+      a {display:inline-flex;align-items:center;justify-content:center;min-height:44px;padding:0 18px;border-radius:8px;background:#2b7286;color:#fff;font-size:14px;font-weight:500;text-decoration:none;white-space:nowrap;transition:background 180ms;}
       a:hover {background:#347f95;}
       a:active {background:#225f70;transform:scale(.97);}
       button {font:inherit;cursor:pointer;border:0;color:#cfc7c2;}
-      .close {width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(246,243,239,.1);}
+      .close {width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(246,243,239,.1);}
       .close:hover {background:rgba(246,243,239,.18);color:#fff;}
       a:focus-visible,button:focus-visible {outline:3px solid #7ec6da;outline-offset:3px;}
       .pill {pointer-events:auto;position:fixed;right:24px;bottom:calc(20px + env(safe-area-inset-bottom));display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:8px 18px;border-radius:999px;background:#100f0f;color:#fff;font-size:14px;font-weight:500;box-shadow:0 6px 20px rgba(16,15,15,.28);animation:pop 220ms cubic-bezier(.2,.7,.3,1) both;}
       .icon {display:flex;width:26px;height:26px;border-radius:8px;background:#3a94ac;align-items:center;justify-content:center;}
       @keyframes rise {from {transform:translateY(120%);}to {transform:translateY(0);}}
       @keyframes pop {from {transform:translateY(20px) scale(.96);opacity:0;}to {transform:translateY(0) scale(1);opacity:1;}}
-      @media(max-width:1100px) {h3 {font-size:30px;}.body {gap:20px;padding:24px;}.image {width:200px;}}
-      @media(max-width:850px) {.image {width:170px;}.body {flex-wrap:wrap;}.actions {width:100%;}h3 {font-size:26px;}}
+      @media(max-width:1100px) {h3 {font-size:24px;}}
+      @media(min-width:641px) and (max-width:760px) {.body {flex-wrap:wrap;gap:10px;padding:16px;}.actions {width:100%;}h3 {font-size:22px;}}
       @media(max-width:640px) {
-        .shell {left:10px;right:10px;}.banner {display:block;box-shadow:0 -10px 30px rgba(16,15,15,.3);position:relative;}
-        .image,.eyebrow,.desktop-description {display:none;}.body {display:grid;gap:14px;padding:16px 16px 28px;}.content {gap:8px;padding-right:46px;}
-        .live {font-size:10px;padding:4px 9px;}h3 {font-size:22px;line-height:1.2;}.mobile-description {display:block;font-size:14px;line-height:1.45;}
-        .actions {display:block;}a {width:100%;min-height:50px;padding:10px 20px;}.close {position:absolute;right:16px;top:16px;width:36px;height:36px;}
+        .shell {left:10px;right:10px;}.banner {max-width:414px;display:block;box-shadow:0 -10px 30px rgba(16,15,15,.3);position:relative;}
+        .image,.eyebrow,.desktop-description {display:none;}.body {display:grid;gap:12px;padding:16px 18px 18px;}.content {gap:4px;padding-right:36px;}
+        .live {font-size:10px;padding:4px 9px;}h3 {font-size:20px;line-height:1.2;}.mobile-description {display:block;font-size:13px;line-height:1.45;}
+        .actions {display:block;}a {width:100%;min-height:44px;padding:10px 18px;}.close {position:absolute;right:12px;top:12px;width:32px;height:32px;}
         .pill {right:16px;bottom:calc(16px + env(safe-area-inset-bottom));gap:9px;padding:8px 16px;}
       }
       @media(prefers-reduced-motion:reduce) {.banner,.pill {animation:none;}a {transition:none;}}
