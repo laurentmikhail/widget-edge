@@ -1,9 +1,9 @@
-"use strict";(()=>{var c="https://pibfkswjeidelzxxvzsg.supabase.co/storage/v1/object/public/widget-assets/freedom-250",k={eyebrow:"KNOW BEFORE YOU GO",title:"The Digital Fan Guide is live!",description:"Build your race-day itinerary with interactive maps, guides & schedules - right at your fingertips.",ctaText:"Get Started",ctaUrl:"#",imageUrl:`${c}/fan-guide-map.png`,maxWidth:940,zIndex:2147483647,colors:{navy:"#16224C",navyDark:"#0E1734",red:"#CF1B2F",goldLight:"#EBB34C",goldMid:"#D89B3E",goldDeep:"#B96C1E"},fonts:{baskervville:`${c}/Baskervville-Variable.ttf`,baskervvilleItalic:`${c}/Baskervville-Italic-Variable.ttf`,eurostile:`${c}/Eurostile-Oblique.otf`,eurostileBold:`${c}/Eurostile-BoldOblique.otf`,vintageGoods:`${c}/VintageGoods.otf`}};function E(){return{...k}}function v(e={}){let t=L(k,e),n=$(t);if(z(n))return{host:null,close:()=>{}};let o=document.createElement("div");o.setAttribute("data-widget-template","freedom-fan-guide-banner");let g=o.attachShadow?o.attachShadow({mode:"open"}):o,m=document.createElement("style");m.textContent=F(t),g.appendChild(m);let u=r("div","f250-widget-shell"),a=r("section","f250-banner");a.setAttribute("aria-label",t.ariaLabel||"Digital fan guide");let s=r("div","f250-rule");a.appendChild(s);let l=r("div","f250-image-panel"),i=document.createElement("img");i.src=t.imageUrl,i.alt=t.imageAlt||"Course map",i.loading="lazy",i.decoding="async",i.className="f250-map",l.appendChild(i);let h=r("div","f250-image-overlay");l.appendChild(h),l.appendChild(B(t.liveLabel||"Live")),a.appendChild(l);let d=r("div","f250-content"),w=r("span","f250-eyebrow");w.textContent=t.eyebrow,d.appendChild(w);let x=document.createElement("h3");x.className="f250-title",x.textContent=t.title,d.appendChild(x);let b=document.createElement("p");b.className="f250-description",b.textContent=t.description,d.appendChild(b),a.appendChild(d);let y=r("div","f250-actions"),f=document.createElement("a");f.className="f250-cta",f.href=t.ctaUrl||"#",f.target=t.ctaTarget||"_blank",f.rel="noopener noreferrer",f.textContent=t.ctaText||"Get Started",y.appendChild(f);let p=document.createElement("button");return p.className="f250-close",p.type="button",p.setAttribute("aria-label",t.closeLabel||"Dismiss"),p.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>',p.addEventListener("click",()=>{S(n),o.remove()}),y.appendChild(p),a.appendChild(y),u.appendChild(a),g.appendChild(u),document.body.appendChild(o),{host:o,close:()=>o.remove()}}function B(e){let t=r("span","f250-live-badge"),n=r("span","f250-live-dot");return t.appendChild(n),t.appendChild(document.createTextNode(e)),t}function F(e){let t=e.colors||{},n=e.fonts||{};return`
+"use strict";(()=>{var v="https://pibfkswjeidelzxxvzsg.supabase.co/storage/v1/object/public/widget-assets/freedom-250",S={eyebrow:"KNOW BEFORE YOU GO",title:"The Digital Fan Guide is live!",description:"Build your race-day itinerary with interactive maps, guides & schedules - right at your fingertips.",ctaText:"Get Started",ctaUrl:"#",imageUrl:`${v}/fan-guide-map.png`,maxWidth:940,zIndex:2147483647,colors:{navy:"#16224C",navyDark:"#0E1734",red:"#CF1B2F",goldLight:"#EBB34C",goldMid:"#D89B3E",goldDeep:"#B96C1E"},fonts:{baskervville:`${v}/Baskervville-Variable.ttf`,baskervvilleItalic:`${v}/Baskervville-Italic-Variable.ttf`,eurostile:`${v}/Eurostile-Oblique.otf`,eurostileBold:`${v}/Eurostile-BoldOblique.otf`,vintageGoods:`${v}/VintageGoods.otf`}};function L(){return{...S}}function z(t={}){let e=O(S,t),n=j(e);if(M(n))return{host:null,close:()=>{}};let i=document.createElement("div");i.setAttribute("data-widget-template","freedom-fan-guide-banner");let h=i.attachShadow?i.attachShadow({mode:"open"}):i,w=document.createElement("style");w.textContent=U(e),h.appendChild(w);let b=g("div","f250-widget-shell"),a=g("section","f250-banner");a.setAttribute("aria-label",e.ariaLabel||"Digital fan guide");let s=g("div","f250-rule");a.appendChild(s);let d=g("div","f250-image-panel"),r=document.createElement("img");r.src=e.imageUrl,r.alt=e.imageAlt||"Course map",r.loading="lazy",r.decoding="async",r.className="f250-map",d.appendChild(r);let y=g("div","f250-image-overlay");d.appendChild(y),d.appendChild(D(e.liveLabel||"Live")),a.appendChild(d);let p=g("div","f250-content"),k=g("span","f250-eyebrow");k.textContent=e.eyebrow,p.appendChild(k);let x=document.createElement("h3");x.className="f250-title",x.textContent=e.title,p.appendChild(x);let c=document.createElement("p");c.className="f250-description",c.textContent=e.description,p.appendChild(c),a.appendChild(p);let l=g("div","f250-actions"),f=document.createElement("a");f.className="f250-cta",f.href=e.ctaUrl||"#",f.target=e.ctaTarget||"_blank",f.rel="noopener noreferrer",f.textContent=e.ctaText||"Get Started",l.appendChild(f);let m=document.createElement("button");return m.className="f250-close",m.type="button",m.setAttribute("aria-label",e.closeLabel||"Dismiss"),m.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"></path></svg>',m.addEventListener("click",()=>{N(n),i.remove()}),l.appendChild(m),a.appendChild(l),b.appendChild(a),h.appendChild(b),document.body.appendChild(i),{host:i,close:()=>i.remove()}}function D(t){let e=g("span","f250-live-badge"),n=g("span","f250-live-dot");return e.appendChild(n),e.appendChild(document.createTextNode(t)),e}function U(t){let e=t.colors||{},n=t.fonts||{};return`
 @import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700;800&family=Saira+Condensed:wght@500;600;700;800&display=swap');
 
 @font-face {
   font-family: 'F250 Baskervville';
-  src: url('${C(n.baskervville)}') format('truetype');
+  src: url('${$(n.baskervville)}') format('truetype');
   font-weight: 400 700;
   font-style: normal;
   font-display: swap;
@@ -11,7 +11,7 @@
 
 @font-face {
   font-family: 'F250 Eurostile';
-  src: url('${C(n.eurostileBold||n.eurostile)}') format('opentype');
+  src: url('${$(n.eurostileBold||n.eurostile)}') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -20,12 +20,12 @@
 *, *::before, *::after { box-sizing: border-box; }
 
 :host {
-  --f250-navy: ${t.navy||"#16224C"};
-  --f250-navy-dark: ${t.navyDark||"#0E1734"};
-  --f250-red: ${t.red||"#CF1B2F"};
-  --f250-gold-light: ${t.goldLight||"#EBB34C"};
-  --f250-gold-mid: ${t.goldMid||"#D89B3E"};
-  --f250-gold-deep: ${t.goldDeep||"#B96C1E"};
+  --f250-navy: ${e.navy||"#16224C"};
+  --f250-navy-dark: ${e.navyDark||"#0E1734"};
+  --f250-red: ${e.red||"#CF1B2F"};
+  --f250-gold-light: ${e.goldLight||"#EBB34C"};
+  --f250-gold-mid: ${e.goldMid||"#D89B3E"};
+  --f250-gold-deep: ${e.goldDeep||"#B96C1E"};
   --f250-gold-gradient: linear-gradient(180deg, var(--f250-gold-light) 0%, var(--f250-gold-mid) 45%, var(--f250-gold-deep) 100%);
   --f250-display: 'F250 Baskervville', Georgia, 'Times New Roman', serif;
   --f250-sans: 'Libre Franklin', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
@@ -37,7 +37,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: ${Number(e.zIndex)||2147483647};
+  z-index: ${Number(t.zIndex)||2147483647};
   display: flex;
   justify-content: center;
   padding: 0 16px 20px;
@@ -49,7 +49,7 @@
   pointer-events: auto;
   position: relative;
   width: 100%;
-  max-width: ${D(e.maxWidth||940)};
+  max-width: ${T(t.maxWidth||940)};
   display: flex;
   align-items: stretch;
   background: var(--f250-navy-dark);
@@ -300,4 +300,44 @@
     animation: none;
   }
 }
-`}function $(e){return`f250-fan-guide-dismissed:${e.widgetId||"default"}`}function z(e){try{return sessionStorage.getItem(e)==="1"}catch{return!1}}function S(e){try{sessionStorage.setItem(e,"1")}catch{}}function L(e,t){let n={...e,...t};return n.colors={...e.colors||{},...t.colors||{}},n.fonts={...e.fonts||{},...t.fonts||{}},n}function r(e,t){let n=document.createElement(e);return t&&(n.className=t),n}function D(e){return typeof e=="number"?`${e}px`:String(e)}function C(e){return String(e||"").replace(/['"\\\n\r]/g,"")}function I(e){document.readyState!=="loading"?e():document.addEventListener("DOMContentLoaded",e)}async function G(e){if(e.dataset.widgetMounted==="true")return;e.dataset.widgetMounted="true";let t=e.dataset.widgetId,n=e.dataset.demo,o=e.dataset.template||n;if(n==="freedom-fan-guide-banner"){v({...E(),widgetId:"demo"});return}if(!t)return;let g=e.getAttribute("src"),m=g?new URL(g,document.baseURI).origin:location.origin||"",u=e.dataset.apiBase||m,a;try{let i=e.dataset.noCache==="true",h=i?`?t=${Date.now()}`:"",d=await fetch(`${u}/api/widget/${encodeURIComponent(t)}${h}`,{cache:i?"no-store":"default"});if(!d.ok)throw new Error(`Widget config failed: ${d.status}`);a=await d.json()}catch(i){console.error("[loader.v3] failed to load widget",i);return}let s=a?.config??a,l=s?.template||s?.type||o;if(l==="freedom-fan-guide-banner"){v({...s?.settings||s?.banner||s,widgetId:t});return}console.warn("[loader.v3] unknown template",l)}I(()=>{document.querySelectorAll('script[src*="loader.v3.js"]').forEach(G)});})();
+`}function j(t){return`f250-fan-guide-dismissed:${t.widgetId||"default"}`}function M(t){try{return sessionStorage.getItem(t)==="1"}catch{return!1}}function N(t){try{sessionStorage.setItem(t,"1")}catch{}}function O(t,e){let n={...t,...e};return n.colors={...t.colors||{},...e.colors||{}},n.fonts={...t.fonts||{},...e.fonts||{}},n}function g(t,e){let n=document.createElement(t);return e&&(n.className=e),n}function T(t){return typeof t=="number"?`${t}px`:String(t)}function $(t){return String(t||"").replace(/['"\\\n\r]/g,"")}var F=new URL("widget-assets/freshwater/",document.currentScript?.src||document.baseURI).href,G={title:"The Festival Guide is live",eyebrow:"Plan your festival day",liveLabel:"Now live",description:"Seven wine regions, three stages, three food zones \u2014 find it all on the map",mobileDescription:"Map, schedule & more",ctaText:"Open the Guide",ctaUrl:"https://map.visitmke.org/?event=visit-milwaukee&area=freshwater-food--wine-festival&floor=area-12-level-1&view=map&in-map=event",imageUrl:`${F}guide.png`,imageAlt:"Freshwater Festival Guide showing restaurants, the festival map and schedule",maxWidth:1180,zIndex:2147483647};function I(){return{...G}}function E(t={}){let e={...G,...t},n=document.createElement("div");n.setAttribute("data-widget-template","freshwater-guide-banner");let i=n.attachShadow({mode:"open"}),h=document.createElement("style"),w=Number(e.maxWidth)>0?Number(e.maxWidth):1180;h.textContent=`
+      ${[400,500,600].map(u=>`@font-face {font-family: 'Freshwater Poppins';font-weight:${u};font-style:normal;font-display:swap;src:url('${F}poppins-${u}.woff2') format('woff2');}`).join(`
+`)}
+      :host {font-family:'Freshwater Poppins',system-ui,sans-serif;color:#fff;}
+      *,*::before,*::after {box-sizing:border-box;}
+      [hidden] {display:none!important;}
+      .shell {position:fixed;bottom:0;left:24px;right:24px;z-index:${Number(e.zIndex)||2147483647};pointer-events:none;display:flex;justify-content:center;}
+      .banner {pointer-events:auto;width:100%;max-width:${w}px;display:flex;background:#100f0f;border-top:3px solid #3a94ac;border-radius:16px 16px 0 0;overflow:hidden;box-shadow:0 -10px 34px rgba(16,15,15,.22);padding-bottom:env(safe-area-inset-bottom);animation:rise 340ms cubic-bezier(.2,.7,.3,1) both;max-height:85vh;overflow-y:auto;}
+      .image {flex:none;width:240px;position:relative;background:#1b1a19;}
+      .image img {position:absolute;width:100%;height:100%;object-fit:cover;object-position:center;}
+      .body {flex:1;min-width:0;display:flex;align-items:center;gap:28px;padding:28px 28px 34px;}
+      .content {display:grid;gap:10px;min-width:0;flex:1;}
+      .labels {display:flex;align-items:center;gap:10px;flex-wrap:wrap;}
+      .live {font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;background:#2b7286;border-radius:999px;padding:4px 10px;}
+      .eyebrow {font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#7ec6da;}
+      h3 {margin:0;font-size:38px;line-height:1.14;font-weight:600;letter-spacing:-.01em;text-wrap:pretty;}
+      p {margin:0;font-size:16px;line-height:1.5;color:#d6cfcb;max-width:52ch;}
+      .mobile-description {display:none;}
+      .actions {flex:none;display:flex;align-items:center;gap:12px;}
+      a {display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 28px;border-radius:12px;background:#2b7286;color:#fff;font-size:16px;font-weight:500;text-decoration:none;white-space:nowrap;transition:background 180ms;}
+      a:hover {background:#347f95;}
+      a:active {background:#225f70;transform:scale(.97);}
+      button {font:inherit;cursor:pointer;border:0;color:#cfc7c2;}
+      .close {width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:10px;background:rgba(246,243,239,.1);}
+      .close:hover {background:rgba(246,243,239,.18);color:#fff;}
+      a:focus-visible,button:focus-visible {outline:3px solid #7ec6da;outline-offset:3px;}
+      .pill {pointer-events:auto;position:fixed;right:24px;bottom:calc(20px + env(safe-area-inset-bottom));display:inline-flex;align-items:center;gap:10px;min-height:44px;padding:8px 18px;border-radius:999px;background:#100f0f;color:#fff;font-size:14px;font-weight:500;box-shadow:0 6px 20px rgba(16,15,15,.28);animation:pop 220ms cubic-bezier(.2,.7,.3,1) both;}
+      .icon {display:flex;width:26px;height:26px;border-radius:8px;background:#3a94ac;align-items:center;justify-content:center;}
+      @keyframes rise {from {transform:translateY(120%);}to {transform:translateY(0);}}
+      @keyframes pop {from {transform:translateY(20px) scale(.96);opacity:0;}to {transform:translateY(0) scale(1);opacity:1;}}
+      @media(max-width:1100px) {h3 {font-size:30px;}.body {gap:20px;padding:24px;}.image {width:200px;}}
+      @media(max-width:850px) {.image {width:170px;}.body {flex-wrap:wrap;}.actions {width:100%;}h3 {font-size:26px;}}
+      @media(max-width:640px) {
+        .shell {left:10px;right:10px;}.banner {display:block;box-shadow:0 -10px 30px rgba(16,15,15,.3);position:relative;}
+        .image,.eyebrow,.desktop-description {display:none;}.body {display:grid;gap:14px;padding:16px 16px 28px;}.content {gap:8px;padding-right:46px;}
+        .live {font-size:10px;padding:4px 9px;}h3 {font-size:22px;line-height:1.2;}.mobile-description {display:block;font-size:14px;line-height:1.45;}
+        .actions {display:block;}a {width:100%;min-height:50px;padding:10px 20px;}.close {position:absolute;right:16px;top:16px;width:36px;height:36px;}
+        .pill {right:16px;bottom:calc(16px + env(safe-area-inset-bottom));gap:9px;padding:8px 16px;}
+      }
+      @media(prefers-reduced-motion:reduce) {.banner,.pill {animation:none;}a {transition:none;}}
+    `,i.appendChild(h);let b=o("div","shell"),a=o("section","banner");a.setAttribute("aria-label","Festival Guide");let s=o("div","image"),d=o("img");d.src=new URL(e.imageUrl,F).href,d.alt=e.imageAlt,d.decoding="async",s.appendChild(d),a.appendChild(s);let r=o("div","body"),y=o("div","content"),p=o("div","labels");p.append(o("span","live",e.liveLabel),o("span","eyebrow",e.eyebrow)),y.append(p,o("h3","",e.title),o("p","desktop-description",e.description),o("p","mobile-description",e.mobileDescription));let k=o("div","actions"),x=o("a","",e.ctaText);x.href=e.ctaUrl,x.target="_blank",x.rel="noopener noreferrer";let c=o("button","close");c.type="button",c.setAttribute("aria-label","Dismiss Festival Guide banner"),c.innerHTML='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6L6 18M6 6l12 12"/></svg>',k.append(x,c),r.append(y,k),a.appendChild(r);let l=o("button","pill");l.type="button",l.setAttribute("aria-label","Open the Festival Guide banner");let f=o("span","icon");f.setAttribute("aria-hidden","true"),f.innerHTML='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6l6-3 6 3 6-3v15l-6 3-6-3-6 3zM9 3v15M15 6v15"/></svg>',l.append(f,document.createTextNode("Festival Guide"));let m=`freshwater-guide-dismissed:${e.widgetId||"default"}`,B=!1;try{B=localStorage.getItem(m)==="1"}catch{}function C(u,A=!1){a.hidden=u,l.hidden=!u,l.setAttribute("aria-expanded",String(!u));try{localStorage.setItem(m,u?"1":"0")}catch{}A&&(u?l:c).focus()}return c.addEventListener("click",()=>C(!0,!0)),l.addEventListener("click",()=>C(!1,!0)),C(B),b.append(a,l),i.appendChild(b),document.body.appendChild(n),{host:n,close:()=>C(!0),destroy:()=>n.remove()}}function o(t,e,n){let i=document.createElement(t);return e&&(i.className=e),n!==void 0&&(i.textContent=n),i}function R(t){document.readyState!=="loading"?t():document.addEventListener("DOMContentLoaded",t)}async function W(t){if(t.dataset.widgetMounted==="true")return;t.dataset.widgetMounted="true";let e=t.dataset.widgetId,n=t.dataset.demo,i=t.dataset.template||n;if(n==="freshwater-guide-banner"){E({...I(),widgetId:"demo"});return}if(n==="freedom-fan-guide-banner"){z({...L(),widgetId:"demo"});return}if(!e)return;let h=t.getAttribute("src"),w=h?new URL(h,document.baseURI).origin:location.origin||"",b=t.dataset.apiBase||w,a;try{let r=t.dataset.noCache==="true",y=r?`?t=${Date.now()}`:"",p=await fetch(`${b}/api/widget/${encodeURIComponent(e)}${y}`,{cache:r?"no-store":"default"});if(!p.ok)throw new Error(`Widget config failed: ${p.status}`);a=await p.json()}catch(r){console.error("[loader.v3] failed to load widget",r);return}let s=a?.config??a,d=s?.template||s?.type||i;if(d==="freshwater-guide-banner"){E({...s?.settings||s?.banner||s,widgetId:e});return}if(d==="freedom-fan-guide-banner"){z({...s?.settings||s?.banner||s,widgetId:e});return}console.warn("[loader.v3] unknown template",d)}R(()=>{document.querySelectorAll('script[src*="loader.v3.js"]').forEach(W)});})();

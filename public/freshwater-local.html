@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Freshwater — Festival Guide demo</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; background: #f6f3ef; color: #100f0f; font-family: system-ui, sans-serif; }
+    header { background: #100f0f; color: #f6f3ef; padding: 24px 32px; }
+    .brand { font: 16px Georgia, serif; letter-spacing: .26em; text-transform: uppercase; }
+    main { max-width: 850px; padding: 56px 32px 350px; }
+    h1 { margin: 0 0 18px; font: 46px/1.1 Georgia, serif; letter-spacing: .02em; text-transform: uppercase; }
+    p { color: #5c5653; line-height: 1.6; }
+    @media (max-width: 640px) { header { padding: 24px 16px; } main { padding: 28px 16px 300px; } h1 { font-size: 26px; } }
+  </style>
+</head>
+<body>
+  <header><span class="brand">Freshwater</span></header>
+  <main>
+    <h1>Welcome to Freshwater Food &amp; Wine Festival</h1>
+    <p>Explore the festival with the interactive Festival Guide.</p>
+  </main>
+  <script>
+    const loader = document.createElement('script');
+    loader.src = './loader.v3.js?t=' + Date.now();
+    loader.dataset.widgetId = 'freshwater-festival-guide';
+    loader.dataset.noCache = 'true';
+    if (location.protocol === 'file:') {
+      loader.dataset.apiBase = 'https://widget-edge.vercel.app';
+    }
+    document.body.appendChild(loader);
+  </script>
+</body>
+</html>

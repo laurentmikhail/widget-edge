@@ -1,4 +1,5 @@
 import { demoFreedomFanGuideConfig, renderFreedomFanGuideBanner } from './templates/freedom-fan-guide-banner.js';
+import { demoFreshwaterGuideConfig, renderFreshwaterGuideBanner } from './templates/freshwater-guide-banner.js';
 
 function ready(fn) {
     if (document.readyState !== 'loading') fn();
@@ -12,6 +13,11 @@ async function mount(scriptTag) {
     const id = scriptTag.dataset.widgetId;
     const demo = scriptTag.dataset.demo;
     const template = scriptTag.dataset.template || demo;
+
+    if (demo === 'freshwater-guide-banner') {
+        renderFreshwaterGuideBanner({ ...demoFreshwaterGuideConfig(), widgetId: 'demo' });
+        return;
+    }
 
     if (demo === 'freedom-fan-guide-banner') {
         renderFreedomFanGuideBanner({ ...demoFreedomFanGuideConfig(), widgetId: 'demo' });
@@ -38,6 +44,11 @@ async function mount(scriptTag) {
 
     const config = payload?.config ?? payload;
     const resolvedTemplate = config?.template || config?.type || template;
+
+    if (resolvedTemplate === 'freshwater-guide-banner') {
+        renderFreshwaterGuideBanner({ ...(config?.settings || config?.banner || config), widgetId: id });
+        return;
+    }
 
     if (resolvedTemplate === 'freedom-fan-guide-banner') {
         renderFreedomFanGuideBanner({ ...(config?.settings || config?.banner || config), widgetId: id });
