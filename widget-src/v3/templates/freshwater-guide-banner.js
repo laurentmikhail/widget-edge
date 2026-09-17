@@ -102,16 +102,19 @@ export function renderFreshwaterGuideBanner(config = {}) {
     const key = `freshwater-guide-dismissed:${cfg.widgetId || 'default'}`;
     let dismissed = false;
     try { dismissed = localStorage.getItem(key) === '1'; } catch { /* Storage may be unavailable. */ }
-    function setDismissed(value, focus = false) {
+    if (cfg.initialState === 'pill') dismissed = true;
+    function setDismissed(value, focus = false, persist = true) {
         banner.hidden = value;
         pill.hidden = !value;
         pill.setAttribute('aria-expanded', String(!value));
-        try { localStorage.setItem(key, value ? '1' : '0'); } catch { /* Keep controls working without storage. */ }
+        if (persist) {
+            try { localStorage.setItem(key, value ? '1' : '0'); } catch { /* Keep controls working without storage. */ }
+        }
         if (focus) (value ? pill : close).focus();
     }
     close.addEventListener('click', () => setDismissed(true, true));
     pill.addEventListener('click', () => setDismissed(false, true));
-    setDismissed(dismissed);
+    setDismissed(dismissed, false, false);
     shell.append(banner, pill);
     root.appendChild(shell);
     document.body.appendChild(host);

@@ -13,9 +13,10 @@ async function mount(scriptTag) {
     const id = scriptTag.dataset.widgetId;
     const demo = scriptTag.dataset.demo;
     const template = scriptTag.dataset.template || demo;
+    const initialState = scriptTag.dataset.initialState === 'pill' ? 'pill' : undefined;
 
     if (demo === 'freshwater-guide-banner') {
-        renderFreshwaterGuideBanner({ ...demoFreshwaterGuideConfig(), widgetId: 'demo' });
+        renderFreshwaterGuideBanner({ ...demoFreshwaterGuideConfig(), widgetId: 'demo', initialState });
         return;
     }
 
@@ -46,7 +47,7 @@ async function mount(scriptTag) {
     const resolvedTemplate = config?.template || config?.type || template;
 
     if (resolvedTemplate === 'freshwater-guide-banner') {
-        renderFreshwaterGuideBanner({ ...(config?.settings || config?.banner || config), widgetId: id });
+        renderFreshwaterGuideBanner({ ...(config?.settings || config?.banner || config), widgetId: id, initialState });
         return;
     }
 
